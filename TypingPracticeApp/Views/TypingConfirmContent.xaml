@@ -1,0 +1,70 @@
+﻿<UserControl
+    x:Class="TypingPracticeApp.Views.TypingConfirmContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:TypingPracticeApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:interactivity="clr-namespace:TypingPracticeApp.Interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:TypingPracticeApp.ViewModels"
+    xmlns:views="clr-namespace:TypingPracticeApp.Views"
+    d:DataContext="{d:DesignInstance Type={x:Type viewModels:TypingConfirmContentViewModel},
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="515"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <interactivity:InvokeCommandAction Command="{Binding ViewLoadedCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <interactivity:InvokeCommandAction Command="{Binding ViewUnloadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewModels:StartingPracticeDialogViewModel}">
+            <views:StartingPracticeDialog />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <materialDesign:DialogHost DialogContent="{Binding DialogViewModel.Value}" IsOpen="{Binding IsDialogOpen.Value}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="195*" />
+                <RowDefinition Height="300*" />
+                <RowDefinition Height="140*" />
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone
+                Grid.Row="0"
+                Margin="0,0,0,15"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                CornerRadius="3"
+                Mode="Standard">
+                <Border Style="{StaticResource TypingContentBorderStyle}">
+                    <StackPanel VerticalAlignment="Top" Orientation="Vertical">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                            Text="日本語入力モードをオフにしてください。" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Foreground="{StaticResource AppAccentBrush}"
+                            Style="{StaticResource MaterialDesignDisplay2TextBlock}"
+                            Text="スペースキーを押すと開始します。" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                            Text="(途中で ESC キーを押すと終了します。)" />
+                    </StackPanel>
+                </Border>
+            </materialDesign:ColorZone>
+            <controls:TypingKeyboard Grid.Row="1" AccentKey="Space" />
+            <controls:TypingHands Grid.Row="2" AccentKey="Space" />
+        </Grid>
+    </materialDesign:DialogHost>
+
+</UserControl>

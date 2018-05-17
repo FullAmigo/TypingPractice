@@ -1,0 +1,161 @@
+﻿<UserControl
+    x:Class="TypingPracticeApp.Views.TypingResultContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:domain="clr-namespace:TypingPracticeApp.Domain"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:interactivity="clr-namespace:TypingPracticeApp.Interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:TypingPracticeApp.ViewModels"
+    d:DataContext="{d:DesignInstance Type={x:Type viewModels:TypingResultContentViewModel},
+                                     IsDesignTimeCreatable=True}"
+    d:DesignHeight="660"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <interactivity:InvokeCommandAction Command="{Binding ViewLoadedCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <interactivity:InvokeCommandAction Command="{Binding ViewUnloadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <DockPanel LastChildFill="True">
+        <materialDesign:ColorZone
+            Margin="0,0,0,15"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            CornerRadius="3"
+            DockPanel.Dock="Top"
+            Mode="Standard">
+            <Border Height="Auto" Style="{StaticResource TypingContentBorderStyle}">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource AppAccentBrush}"
+                    Style="{StaticResource MaterialDesignDisplay2TextBlock}"
+                    Text="～～～　結果発表　～～～" />
+            </Border>
+        </materialDesign:ColorZone>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Visible">
+                <ItemsControl HorizontalContentAlignment="Stretch" ItemsSource="{Binding PracticeResultItems}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type domain:PracticeResultItem}">
+                            <Border
+                                Margin="2"
+                                Padding="10"
+                                Background="{DynamicResource MaterialDesignBackground}"
+                                BorderBrush="{DynamicResource MaterialDesignBodyLight}"
+                                BorderThickness="1"
+                                CornerRadius="4">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="{Binding OdaiText}" />
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                                        <ItemsControl ItemsSource="{Binding PracticeResultKeyInfos}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate DataType="{x:Type domain:PracticeResultKeyInfo}">
+                                                    <TextBlock
+                                                        x:Name="ExpectedKeyTextBlock"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="Consolas"
+                                                        FontSize="24"
+                                                        Text="{Binding ExpectedKey}" />
+                                                    <DataTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding HasKeyMistaked}" Value="True">
+                                                            <Setter TargetName="ExpectedKeyTextBlock" Property="Foreground" Value="{DynamicResource AppErrorBrush}" />
+                                                            <Setter TargetName="ExpectedKeyTextBlock" Property="FontSize" Value="34" />
+                                                        </DataTrigger>
+                                                    </DataTemplate.Triggers>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <ScrollViewer
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto">
+                <ItemsControl HorizontalAlignment="Stretch" ItemsSource="{Binding PracticeResultSummaries}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type domain:PracticeResultSummary}">
+                            <Border
+                                Margin="2"
+                                Padding="10"
+                                Background="{DynamicResource MaterialDesignBackground}"
+                                BorderBrush="{DynamicResource MaterialDesignBodyLight}"
+                                BorderThickness="1">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        Text="{Binding Title}" />
+                                    <TextBlock
+                                        Margin="10,0,0,0"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Foreground="{DynamicResource PrimaryHueDarkBrush}"
+                                        Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                        Text="{Binding Text}" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2">
+                <Button
+                    Height="Auto"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Command="{Binding PracticeRestartingCommand}">
+                    <TextBlock
+                        Margin="10"
+                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                        Text="もう１回" />
+                </Button>
+            </Border>
+        </Grid>
+
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,104 @@
+﻿<UserControl
+    x:Class="TypingPracticeApp.Controls.TypingKeyboard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:TypingPracticeApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="900"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style BasedOn="{StaticResource TypingKeyStyle}" TargetType="{x:Type controls:TypingKey}">
+            <Setter Property="Width" Value="30" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Padding" Value="3" />
+        </Style>
+    </UserControl.Resources>
+
+    <Border>
+        <Viewbox Stretch="Uniform">
+            <Canvas Width="450" Height="150">
+                <StackPanel Canvas.Top="0" Orientation="Horizontal">
+                    <controls:TypingKey DisplayText="" />
+                    <controls:TypingKey DisplayText="1" MappedKey="D1" />
+                    <controls:TypingKey DisplayText="2" MappedKey="D2" />
+                    <controls:TypingKey DisplayText="3" MappedKey="D3" />
+                    <controls:TypingKey DisplayText="4" MappedKey="D4" />
+                    <controls:TypingKey DisplayText="5" MappedKey="D5" />
+                    <controls:TypingKey DisplayText="6" MappedKey="D6" />
+                    <controls:TypingKey DisplayText="7" MappedKey="D7" />
+                    <controls:TypingKey DisplayText="8" MappedKey="D8" />
+                    <controls:TypingKey DisplayText="9" MappedKey="D9" />
+                    <controls:TypingKey DisplayText="0" MappedKey="D0" />
+                    <controls:TypingKey DisplayText="-" MappedKey="OemMinus" />
+                    <controls:TypingKey DisplayText="" />
+                    <controls:TypingKey DisplayText="" />
+                    <controls:TypingKey DisplayText="" />
+                </StackPanel>
+                <StackPanel Canvas.Top="30" Orientation="Horizontal">
+                    <controls:TypingKey Width="45" />
+                    <controls:TypingKey DisplayText="Q" MappedKey="Q" />
+                    <controls:TypingKey DisplayText="W" MappedKey="W" />
+                    <controls:TypingKey DisplayText="E" MappedKey="E" />
+                    <controls:TypingKey DisplayText="R" MappedKey="R" />
+                    <controls:TypingKey DisplayText="T" MappedKey="T" />
+                    <controls:TypingKey DisplayText="Y" MappedKey="Y" />
+                    <controls:TypingKey DisplayText="U" MappedKey="U" />
+                    <controls:TypingKey DisplayText="I" MappedKey="I" />
+                    <controls:TypingKey DisplayText="O" MappedKey="O" />
+                    <controls:TypingKey DisplayText="P" MappedKey="P" />
+                    <controls:TypingKey DisplayText="@" MappedKey="Oem3" />
+                    <controls:TypingKey DisplayText="" />
+                </StackPanel>
+                <StackPanel Canvas.Top="60" Orientation="Horizontal">
+                    <controls:TypingKey Width="60" />
+                    <controls:TypingKey DisplayText="A" MappedKey="A" />
+                    <controls:TypingKey DisplayText="S" MappedKey="S" />
+                    <controls:TypingKey DisplayText="D" MappedKey="D" />
+                    <controls:TypingKey DisplayText="F" MappedKey="F" />
+                    <controls:TypingKey DisplayText="G" MappedKey="G" />
+                    <controls:TypingKey DisplayText="H" MappedKey="H" />
+                    <controls:TypingKey DisplayText="J" MappedKey="J" />
+                    <controls:TypingKey DisplayText="K" MappedKey="K" />
+                    <controls:TypingKey DisplayText="L" MappedKey="L" />
+                    <controls:TypingKey DisplayText=";" MappedKey="OemPlus" />
+                    <controls:TypingKey DisplayText=":" MappedKey="Oem1" />
+                    <controls:TypingKey DisplayText="" />
+                </StackPanel>
+                <StackPanel Canvas.Top="90" Orientation="Horizontal">
+                    <controls:TypingKey Width="75" />
+                    <controls:TypingKey DisplayText="Z" MappedKey="Z" />
+                    <controls:TypingKey DisplayText="X" MappedKey="X" />
+                    <controls:TypingKey DisplayText="C" MappedKey="C" />
+                    <controls:TypingKey DisplayText="V" MappedKey="V" />
+                    <controls:TypingKey DisplayText="B" MappedKey="B" />
+                    <controls:TypingKey DisplayText="N" MappedKey="N" />
+                    <controls:TypingKey DisplayText="M" MappedKey="M" />
+                    <controls:TypingKey DisplayText="," MappedKey="OemComma" />
+                    <controls:TypingKey DisplayText="." MappedKey="OemPeriod" />
+                    <controls:TypingKey DisplayText="/" MappedKey="OemQuestion" />
+                    <controls:TypingKey DisplayText="" />
+                    <controls:TypingKey Width="45" />
+                </StackPanel>
+                <StackPanel Canvas.Top="120" Orientation="Horizontal">
+                    <Border Width="150" />
+                    <controls:TypingKey
+                        Width="150"
+                        DisplayText="スペース"
+                        MappedKey="Space" />
+                    <Border Width="150" />
+                </StackPanel>
+                <Canvas Canvas.Left="420" Canvas.Top="30">
+                    <Path
+                        Canvas.Left="-12"
+                        Canvas.Top="2"
+                        Data="M2.5,0.5 L15,0.5 23.5,0.5 36,0.5 C38,0.5 38,1 38,2.5 L38,53.5 C38,55 38,55.5 36,55.5 L15,55.5 C14,55.5 13,55 13,53.5 L13,25.5 2.5,25.5 C1,25.5 0.5,25 0.5,23.5 L0.5,2.5 C0.5,1 1,0.5 2.5,0.5 z"
+                        Fill="{DynamicResource MaterialDesignBackground}"
+                        Stroke="{DynamicResource MaterialDesignBodyLight}" />
+                </Canvas>
+            </Canvas>
+        </Viewbox>
+    </Border>
+
+</UserControl>

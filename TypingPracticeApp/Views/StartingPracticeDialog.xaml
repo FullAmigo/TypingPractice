@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="TypingPracticeApp.Views.StartingPracticeDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:TypingPracticeApp.ViewModels"
+    d:DataContext="{d:DesignInstance Type={x:Type viewModels:StartingPracticeDialogViewModel},
+                                     IsDesignTimeCreatable=True}"
+    d:DesignHeight="200"
+    d:DesignWidth="200"
+    mc:Ignorable="d">
+
+    <Border Margin="16">
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontWeight="Bold"
+            Style="{StaticResource MaterialDesignDisplay4TextBlock}"
+            Text="{Binding RemainingCount.Value}" />
+    </Border>
+
+</UserControl>

@@ -1,0 +1,82 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:TypingPracticeApp.Controls">
+
+    <Style x:Key="TypingKeyStyle" TargetType="{x:Type controls:TypingKey}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:TypingKey}">
+                    <Border
+                        x:Name="KeyOutlineBorder"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{DynamicResource MaterialDesignPaper}"
+                        BorderThickness="0"
+                        CornerRadius="0">
+                        <Border
+                            x:Name="KeyFaceBorder"
+                            Padding="{TemplateBinding Padding}"
+                            Background="{DynamicResource MaterialDesignBackground}"
+                            BorderBrush="{DynamicResource MaterialDesignBodyLight}"
+                            BorderThickness="1"
+                            CornerRadius="2">
+                            <TextBlock
+                                x:Name="DislpayTextBlock"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding DisplayText}" />
+                        </Border>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="MappedKey" Value="F">
+                            <Setter TargetName="DislpayTextBlock" Property="TextDecorations" Value="Underline" />
+                        </Trigger>
+                        <Trigger Property="MappedKey" Value="J">
+                            <Setter TargetName="DislpayTextBlock" Property="TextDecorations" Value="Underline" />
+                        </Trigger>
+                        <Trigger Property="IsAccent" Value="True">
+                            <Setter TargetName="KeyFaceBorder" Property="Background" Value="{DynamicResource AppAccentBrush}" />
+                            <Setter TargetName="DislpayTextBlock" Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMissMatch" Value="True">
+                            <Setter TargetName="KeyFaceBorder" Property="Background" Value="{DynamicResource AppErrorBrush}" />
+                            <Setter TargetName="DislpayTextBlock" Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="L04">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerL04Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="L03">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerL03Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="L02">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerL02Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="L01">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerL01Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="L00">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerL00Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="R00">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerR00Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="R01">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerR01Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="R02">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerR02Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="R03">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerR03Brush}" />
+                        </Trigger>
+                        <Trigger Property="Finger" Value="R04">
+                            <Setter TargetName="KeyOutlineBorder" Property="Background" Value="{DynamicResource AppFingerR04Brush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
