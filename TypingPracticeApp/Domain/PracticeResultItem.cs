@@ -101,7 +101,7 @@ namespace TypingPracticeApp.Domain
 
             var totalElapsed = TimeSpan.FromTicks(resultItems.Select(item => item.Elapsed?.Ticks ?? 0).Sum());
             var totalMinutesText = $"{(int)totalElapsed.TotalMinutes:n0} 分 {totalElapsed.Seconds,2:d2} 秒 {Math.Round(totalElapsed.Milliseconds / 10d, MidpointRounding.AwayFromZero)}";
-            yield return new PracticeResultSummary { Title="入力時間", Text = $"{totalMinutesText}"};
+            yield return new PracticeResultSummary { Title = "入力時間", Text = $"{totalMinutesText}" };
 
             var totalKeyInputtedCount = resultItems.Select(item => item.KeyInputtedCount).Sum();
             yield return new PracticeResultSummary { Title = "キー入力回数", Text = $"{totalKeyInputtedCount}" };
@@ -109,11 +109,17 @@ namespace TypingPracticeApp.Domain
             var totalKeyMistakedCount = resultItems.Select(item => item.KeyMistakedCount).Sum();
             yield return new PracticeResultSummary { Title = "入力ミス回数", Text = $"{totalKeyMistakedCount}" };
 
-            var present = totalKeyInputtedCount==0 ? 0 : 100 * (totalKeyInputtedCount - totalKeyMistakedCount) / totalKeyInputtedCount;
+            var present = totalKeyInputtedCount == 0 ? 0 : 100 * (totalKeyInputtedCount - totalKeyMistakedCount) / totalKeyInputtedCount;
             yield return new PracticeResultSummary { Title = "正確率", Text = $"{present} ％" };
 
-            var keyMistakedKeyInfos = resultItems.SelectMany(item => item.PracticeResultKeyInfos).Where(info => info.HasKeyMistaked).OrderByDescending(info => info.KeyMistakedCount).Take(10).ToList();
-            var weakKeysText = keyMistakedKeyInfos.Any() ? string.Join(" ", keyMistakedKeyInfos.Select(info => $"{info.ExpectedKey}").ToArray()) : "－";
+            var mistakedKeyInfos = resultItems
+                .SelectMany(item => item.PracticeResultKeyInfos)
+                .Where(info => info.HasKeyMistaked)
+                .GroupBy(info => info.ExpectedKey, (key, group) => new { MistakedKey = key, MistakedCount = group.Sum(info => info.KeyMistakedCount) })
+                .OrderByDescending(mistakedInfo => mistakedInfo.MistakedCount)
+                .Take(10)
+                .ToList();
+            var weakKeysText = mistakedKeyInfos.Any() ? string.Join(" ", mistakedKeyInfos.Select(mistakedInfo => $"{mistakedInfo.MistakedKey}").ToArray()) : "－";
             yield return new PracticeResultSummary { Title = "苦手キー", Text = $"{weakKeysText}" };
         }
     }
