@@ -3,9 +3,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Windows.Input;
 using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 using TypingPracticeApp.Domain;
+using TypingPracticeApp.Extensions;
 using TypingPracticeApp.Services;
 
 #endregion
@@ -30,6 +33,8 @@ namespace TypingPracticeApp.ViewModels
 
             this.PracticeRestartingCommand = new ReactiveCommand().AddTo(this.Disposables);
             this.PracticeRestartingCommand.Subscribe(() => this.AppService?.PublishPracticeRestarting()).AddTo(this.Disposables);
+
+            this.Initialize(appService);
         }
 
         public ReactiveCollection<PracticeResultItem> PracticeResultItems { get; }
@@ -71,6 +76,15 @@ namespace TypingPracticeApp.ViewModels
         internal void Summarize()
         {
             this.PracticeResultSummaries.AddRangeOnScheduler(PracticeResultSummary.CreateSummariesBy(this.PracticeResultItems));
+        }
+
+        private void Initialize(AppContextService appService)
+        {
+            appService?.KeyDetectedAsObservable()
+                .Where(_ => this.IsVisibledNotifier.Value)
+                .Where(e => e.Key == Key.Space)
+                .Subscribe(e => this.AppService?.PublishPracticeRestarting())
+                .AddTo(this.Disposables);
         }
     }
 }

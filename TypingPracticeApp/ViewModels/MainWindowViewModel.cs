@@ -34,6 +34,7 @@ namespace TypingPracticeApp.ViewModels
             this.booleanNotifier = new BooleanNotifier();
             this.serialDisposable = new SerialDisposable().AddTo(this.Disposables);
 
+            this.Title = new ReactivePropertySlim<string>($"キーボードタイピング練習 v{AppContextService.AssemblyVersion}").ToReadOnlyReactivePropertySlim().AddTo(this.Disposables);
             this.IsDark = new ReactivePropertySlim<bool>().AddTo(this.Disposables);
             this.ToggleThemeCommand = new ReactiveCommand().AddTo(this.Disposables);
 
@@ -49,6 +50,8 @@ namespace TypingPracticeApp.ViewModels
 
             this.Initialize(appService);
         }
+
+        public ReadOnlyReactivePropertySlim<string> Title { get; }
 
         public ReactivePropertySlim<bool> IsDark { get; }
         public ReactiveCommand ToggleThemeCommand { get; }

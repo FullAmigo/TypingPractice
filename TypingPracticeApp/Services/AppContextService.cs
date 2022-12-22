@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -29,6 +30,8 @@ namespace TypingPracticeApp.Services
         {
             this.practiceItems = new ObservableCollection<PracticeItem>();
         }
+
+        public static string AssemblyVersion => Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
 
         public ObservableCollection<PracticeItem> PracticeItems => this.practiceItems;
 
