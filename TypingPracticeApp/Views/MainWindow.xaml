@@ -9,7 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:TypingPracticeApp.ViewModels"
     xmlns:views="clr-namespace:TypingPracticeApp.Views"
-    Title="キーボードタイピング練習"
+    Title="{Binding Title.Value}"
     Width="920"
     Height="700"
     d:DataContext="{d:DesignInstance Type={x:Type viewModels:MainWindowViewModel},
