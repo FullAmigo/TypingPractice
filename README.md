@@ -1,4 +1,4 @@
-# TypingPractice
+# ⌨️ TypingPractice
 
 This application allows you to practice typing offline.
 
