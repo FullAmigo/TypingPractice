@@ -47,13 +47,13 @@
         <materialDesign:ColorZone
             Grid.Row="0"
             Margin="0,0,0,15"
-            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            materialDesign:ElevationAssist.Elevation="Dp8"
             CornerRadius="3"
             Mode="Standard">
             <Border Style="{StaticResource TypingPracticeContentBorderStyle}">
                 <StackPanel VerticalAlignment="Top" Orientation="Vertical">
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" Text="{Binding OdaiText.Value}" />
-                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="{Binding YomiText.Value}" />
+                    <TextBlock Style="{StaticResource MaterialDesignHeadline4TextBlock}" Text="{Binding OdaiText.Value}" />
+                    <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="{Binding YomiText.Value}" />
                     <ItemsControl ItemsSource="{Binding PracticeKeyInfoViewModels}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -67,7 +67,7 @@
                                     x:Name="InputKeyTextBlock"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                                    Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                                     Text="{Binding ExpectedKey.Value}" />
                                 <!--</Viewbox>-->
                                 <DataTemplate.Triggers>

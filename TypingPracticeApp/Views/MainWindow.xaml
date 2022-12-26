@@ -77,7 +77,7 @@
             <materialDesign:ColorZone
                 Margin="0,0,0,15"
                 Padding="16"
-                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                materialDesign:ElevationAssist.Elevation="Dp8"
                 CornerRadius="3"
                 DockPanel.Dock="Top"
                 Mode="PrimaryDark">
@@ -86,7 +86,7 @@
                         <TextBlock VerticalAlignment="Center" Text="Light" />
                         <ToggleButton
                             Margin="8,0,16,0"
-                            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                            materialDesign:ElevationAssist.Elevation="Dp8"
                             Command="{Binding ToggleThemeCommand}"
                             Focusable="False"
                             IsChecked="{Binding IsDark.Value}"
@@ -98,7 +98,7 @@
                         <TextBlock
                             Margin="16,0,0,0"
                             VerticalAlignment="Center"
-                            Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                             Text="キーボードタイピング練習" />
                     </StackPanel>
                 </DockPanel>

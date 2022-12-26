@@ -13,9 +13,9 @@ using System.Windows;
 [assembly: AssemblyTitle("キーボードタイピング練習")]
 [assembly: AssemblyDescription("キーボードタイピング練習")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("OfficeMare")]
+[assembly: AssemblyCompany("FullAmigo")]
 [assembly: AssemblyProduct("TypingPracticeApp")]
-[assembly: AssemblyCopyright("Copyright ©  2018 OfficeMare")]
+[assembly: AssemblyCopyright("Copyright © 2018 FullAmigo")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -52,7 +52,7 @@ using System.Windows;
 // すべての値を指定するか、次を使用してビルド番号とリビジョン番号を既定に設定できます
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
-[assembly: AssemblyInformationalVersion("2.0.0")]
+[assembly: AssemblyVersion("2.0.1.0")]
+[assembly: AssemblyFileVersion("2.0.1.0")]
+[assembly: AssemblyInformationalVersion("2.0.1")]
 [assembly: NeutralResourcesLanguage("ja-JP")]

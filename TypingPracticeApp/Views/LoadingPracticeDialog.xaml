@@ -22,7 +22,7 @@
             <TextBlock
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                 Text="お題を読み込み中です。"
                 TextWrapping="WrapWithOverflow" />
         </StackPanel>

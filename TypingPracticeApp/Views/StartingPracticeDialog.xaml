@@ -16,7 +16,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             FontWeight="Bold"
-            Style="{StaticResource MaterialDesignDisplay4TextBlock}"
+            Style="{StaticResource MaterialDesignHeadline1TextBlock}"
             Text="{Binding RemainingCount.Value}" />
     </Border>
 

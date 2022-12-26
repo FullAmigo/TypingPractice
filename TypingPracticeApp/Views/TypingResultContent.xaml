@@ -27,7 +27,7 @@
     <DockPanel LastChildFill="True">
         <materialDesign:ColorZone
             Margin="0,0,0,15"
-            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            materialDesign:ElevationAssist.Elevation="Dp8"
             CornerRadius="3"
             DockPanel.Dock="Top"
             Mode="Standard">
@@ -36,7 +36,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Foreground="{DynamicResource AppAccentBrush}"
-                    Style="{StaticResource MaterialDesignDisplay2TextBlock}"
+                    Style="{StaticResource MaterialDesignHeadline3TextBlock}"
                     Text="～～～　結果発表　～～～" />
             </Border>
         </materialDesign:ColorZone>
@@ -67,7 +67,7 @@
                                 BorderThickness="1"
                                 CornerRadius="4">
                                 <StackPanel>
-                                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="{Binding OdaiText}" />
+                                    <TextBlock Style="{StaticResource MaterialDesignHeadline5TextBlock}" Text="{Binding OdaiText}" />
                                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                                         <ItemsControl ItemsSource="{Binding PracticeResultKeyInfos}">
                                             <ItemsControl.ItemsPanel>
@@ -131,7 +131,7 @@
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center"
                                         Foreground="{DynamicResource PrimaryHueDarkBrush}"
-                                        Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                        Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                         Text="{Binding Text}" />
                                 </StackPanel>
                             </Border>
@@ -151,7 +151,7 @@
                     Command="{Binding PracticeRestartingCommand}">
                     <TextBlock
                         Margin="10"
-                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                        Style="{StaticResource MaterialDesignHeadline4TextBlock}"
                         Text="もう１回" />
                 </Button>
             </Border>
