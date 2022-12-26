@@ -41,23 +41,23 @@
             <materialDesign:ColorZone
                 Grid.Row="0"
                 Margin="0,0,0,15"
-                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                materialDesign:ElevationAssist.Elevation="Dp8"
                 CornerRadius="3"
                 Mode="Standard">
                 <Border Style="{StaticResource TypingContentBorderStyle}">
                     <StackPanel VerticalAlignment="Top" Orientation="Vertical">
                         <TextBlock
                             HorizontalAlignment="Center"
-                            Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                             Text="日本語入力モードをオフにしてください。" />
                         <TextBlock
                             HorizontalAlignment="Center"
                             Foreground="{StaticResource AppAccentBrush}"
-                            Style="{StaticResource MaterialDesignDisplay2TextBlock}"
+                            Style="{StaticResource MaterialDesignHeadline3TextBlock}"
                             Text="スペースキーを押すと開始します。" />
                         <TextBlock
                             HorizontalAlignment="Center"
-                            Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                            Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                             Text="(途中で ESC キーを押すと終了します。)" />
                     </StackPanel>
                 </Border>

@@ -1,5 +1,6 @@
 ﻿#region References
 
+using System;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 
@@ -9,19 +10,20 @@ namespace TypingPracticeApp.Domain
 {
     public static class ThemeHelper
     {
+        private static readonly PaletteHelper PaletteHelper = new PaletteHelper();
+
         public static void ApplyBase(bool isDark)
         {
-            new PaletteHelper().SetLightDark(isDark);
+            var theme = ThemeHelper.PaletteHelper.GetTheme();
+            var baseThem = isDark ? (IBaseTheme)new MaterialDesignDarkTheme() : new MaterialDesignLightTheme();
+            theme.SetBaseTheme(baseThem);
+            ThemeHelper.PaletteHelper.SetTheme(theme);
         }
 
-        public static void ApplyPrimary(Swatch swatch)
-        {
-            new PaletteHelper().ReplacePrimaryColor(swatch);
-        }
+        [Obsolete("未サポート", true)]
+        public static void ApplyPrimary(Swatch swatch) => throw new NotSupportedException();
 
-        public static void ApplyAccent(Swatch swatch)
-        {
-            new PaletteHelper().ReplaceAccentColor(swatch);
-        }
+        [Obsolete("未サポート", true)]
+        public static void ApplyAccent(Swatch swatch) => throw new NotSupportedException();
     }
 }
