@@ -11,7 +11,7 @@
     xmlns:views="clr-namespace:TypingPracticeApp.Views"
     Title="{Binding Title.Value}"
     Width="920"
-    Height="700"
+    Height="780"
     d:DataContext="{d:DesignInstance Type={x:Type viewModels:MainWindowViewModel},
                                      IsDesignTimeCreatable=True}"
     Background="{DynamicResource MaterialDesignPaper}"
