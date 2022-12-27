@@ -76,13 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_9A6D0DC3F75C17FDA9BDEECA8691ED8B"
-        "OwnerKey" = "8:_48A0BBDD1C3940CABEEFEA69C655B059"
+        "OwnerKey" = "8:_31904740BBB8E5E1F09302E82570E489"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9A6D0DC3F75C17FDA9BDEECA8691ED8B"
-        "OwnerKey" = "8:_31904740BBB8E5E1F09302E82570E489"
+        "OwnerKey" = "8:_48A0BBDD1C3940CABEEFEA69C655B059"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -137,12 +137,6 @@
         {
         "MsmKey" = "8:_FD9DEC2F0B6CBC076E09056E9E5D15B1"
         "OwnerKey" = "8:_48A0BBDD1C3940CABEEFEA69C655B059"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9A6D0DC3F75C17FDA9BDEECA8691ED8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -221,6 +215,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_31904740BBB8E5E1F09302E82570E489"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9A6D0DC3F75C17FDA9BDEECA8691ED8B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -815,7 +815,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:タイピング練習アプリ"
         "ProductCode" = "8:{BA3E7EA0-71C3-4137-B3D2-D7F2FB0AADE7}"
-        "PackageCode" = "8:{A9F0E73D-B69D-4E13-8B46-B7A6A2F727C6}"
+        "PackageCode" = "8:{823BDE6E-97DE-4699-B42D-87835B4A533F}"
         "UpgradeCode" = "8:{917DDA9E-4004-4322-949E-A4F69FAAF26D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1374,7 +1374,7 @@
             "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
+            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
