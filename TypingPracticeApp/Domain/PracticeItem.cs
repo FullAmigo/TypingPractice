@@ -17,9 +17,9 @@ namespace TypingPracticeApp.Domain
 
         public static IEnumerable<PracticeItem> CreateDefaultPracticeItems()
         {
-            yield return new PracticeItem { OdaiText = "全キーテスト", YomiText = "てすと", ExpectedKeysText = "1234567890-qwertyuiop@asdfghjkl;:zxcvbnm,./" };
+            //yield return new PracticeItem { OdaiText = "全キーテスト", YomiText = "てすと", ExpectedKeysText = "1234567890-qwertyuiop@asdfghjkl;:zxcvbnm,./" };
             yield return new PracticeItem { OdaiText = "あいうえお", YomiText = "あいうえお", ExpectedKeysText = "aiueo" };
-            yield return new PracticeItem { OdaiText = "本日は晴天なり", YomiText = "ほんじつはせいてんなり", ExpectedKeysText = "HONJITUHASEITENNNARI", };
+            //yield return new PracticeItem { OdaiText = "本日は晴天なり", YomiText = "ほんじつはせいてんなり", ExpectedKeysText = "HONJITUHASEITENNNARI", };
             //yield return new PracticeItem { OdaiText = "かきくけこ", YomiText = "かきくけこ", ExpectedKeysText = "KAKIKUKEKO" };
             yield return new PracticeItem { OdaiText = "香りが引き立つ", YomiText = "かおりがひきたつ", ExpectedKeysText = "kaorigahikitatu" };
             //yield return new PracticeItem { OdaiText = "隠し味が効いている", YomiText = "かくしあじがきいている", ExpectedKeysText = "kakusiajigakiiteiru" };
