@@ -37,20 +37,15 @@ namespace TypingPracticeApp.Services
 
         public static Task BeepAsync() => Task.Run(() => Console.Beep());
 
-        private static async Task SavePracticeItemsAsync(IEnumerable<PracticeItem> practiceItemsToSave)
+        private static string ResolveOdaiFilePath() => AppContextService.Filepath;
+
+        private static async Task SavePracticeItemsAsync(string odaiFilePath, IEnumerable<PracticeItem> practiceItemsToSave)
         {
-            try
+            using (var file = File.OpenWrite(odaiFilePath))
+            using (var writer = new StreamWriter(file))
             {
-                using (var file = File.OpenWrite(AppContextService.Filepath))
-                using (var writer = new StreamWriter(file))
-                {
-                    var json = JsonConvert.SerializeObject(practiceItemsToSave, Formatting.Indented);
-                    await writer.WriteAsync(json);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugLog.Print($"{ex}");
+                var json = JsonConvert.SerializeObject(practiceItemsToSave, Formatting.Indented);
+                await writer.WriteAsync(json).ConfigureAwait(false);
             }
         }
 
@@ -81,24 +76,53 @@ namespace TypingPracticeApp.Services
         public async Task LoadPracticeItemsAsync()
         {
             this.PracticeItems.Clear();
-            try
+
+            var loaded = false;
+            var odaiFilePath = AppContextService.ResolveOdaiFilePath();
+            if (File.Exists(odaiFilePath))
             {
-                using (var file = File.OpenText(AppContextService.Filepath))
+                try
                 {
-                    var json = await file.ReadToEndAsync();
-                    var loadedItems = JsonConvert.DeserializeObject<PracticeItem[]>(json)?.ToList();
-                    //this.PracticeItems.AddRange(loadedItems);
-                    loadedItems?.ForEach(this.PracticeItems.Add);
+                    await this.LoadPracticeItemsAsync(odaiFilePath).ConfigureAwait(false);
+                    loaded = true;
+                }
+                catch (Exception ex)
+                {
+                    DebugLog.Print($"{ex}");
                 }
             }
-            catch (Exception ex)
+
+            if (!loaded)
             {
-                DebugLog.Print($"{ex}");
-                var defaultPracticeItems = PracticeItem.CreateDefaultPracticeItems().ToList();
-                await AppContextService.SavePracticeItemsAsync(defaultPracticeItems);
-                //this.PracticeItems.AddRange(defaultPracticeItems);
-                defaultPracticeItems.ForEach(this.PracticeItems.Add);
+                try
+                {
+                    await this.CreateDefaultPracticeItemsAsync(odaiFilePath).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    DebugLog.Print($"{ex}");
+                }
             }
+        }
+
+        private async Task LoadPracticeItemsAsync(string odaiFilePath)
+        {
+            using (var file = File.OpenText(odaiFilePath))
+            {
+                var json = await file.ReadToEndAsync().ConfigureAwait(false);
+                var loadedItems = JsonConvert.DeserializeObject<PracticeItem[]>(json)?.ToList();
+                //this.PracticeItems.AddRange(loadedItems);
+                loadedItems?.ForEach(this.PracticeItems.Add);
+            }
+        }
+
+        private async Task CreateDefaultPracticeItemsAsync(string odaiFilePath)
+        {
+            var defaultPracticeItems = PracticeItem.CreateDefaultPracticeItems().ToList();
+            //this.PracticeItems.AddRange(defaultPracticeItems);
+            defaultPracticeItems.ForEach(this.PracticeItems.Add);
+
+            await AppContextService.SavePracticeItemsAsync(odaiFilePath, defaultPracticeItems).ConfigureAwait(false);
         }
     }
 }
