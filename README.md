@@ -2,7 +2,7 @@
 
 ⌨️ TypingPractice: This application allows you to practice typing on a Japanese keyboard offline.
 
-⌨️ タイピング練習: このアプリケーションは、オフラインで日本語キーボードのタイピングを練習することができます。
+⌨️ タイピング練習: オフラインで日本語キーボードのタイピング練習ができるアプリです。
 
 ## デモ
 
